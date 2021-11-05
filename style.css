@@ -51,6 +51,9 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: clifford;
+  background-image: url(/images/bg-pattern-quotation.svg);
+  background-repeat: no-repeat;
+  background-position: top 0rem right 2rem;
 }
 
 .grid__wide--purple h3 {
