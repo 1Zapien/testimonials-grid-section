@@ -1,6 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
 
+@mixin dark-theme($theme: hsl(263, 55%, 52%)) {
+    background-color: $theme;
+    color:  hsl(0, 0%, 81%);
 
+    h3{
+        color:white;
+    }
 
+    .persona{
+
+        .persona__info{
+            b{
+                color:white;
+            }
+        }
+    }
+}
 
 body{
     margin: 0px;
@@ -16,7 +32,8 @@ body{
     display: grid;
     column-gap: 25px;
     row-gap: 25px;
-    grid-auto-rows: 1fr; 
+    grid-auto-rows: auto;
+    align-items: start; 
     grid-template-areas: 
     "clifford clifford"
     "walters walters"
@@ -25,13 +42,14 @@ body{
     "whittle whittle"
 }
 
-@media only screen and (min-width: 1000px ){
+@media only screen and (min-width: 1100px ){
     .grid{
-        width: 85%;
-        display: grid;
-        column-gap: 25px;
-        row-gap: 25px;
-        grid-auto-rows: 1fr; 
+        width: 75%;
+        column-gap: 15px;
+        row-gap: 15px;
+        grid-auto-rows: 1fr;
+        grid-template-columns: 2fr 2fr 2fr 2fr; 
+        align-items: stretch; 
         grid-template-areas: 
         "clifford clifford walters  whittle"
         "harmon abrams abrams whittle"
@@ -41,38 +59,51 @@ body{
 
 
 .grid__wide--purple{
-    grid-area: clifford;
-    background-color: hsl(263, 55%, 52%);
-    color:  hsl(0, 0%, 81%);
+    @include dark-theme;
+    grid-area:clifford;
 }
 
 .grid__box--grey{
+    @include dark-theme($theme:hsl(217, 19%, 35%));
     grid-area:walters;
-    background-color:hsl(217, 19%, 35%);
-    color:  hsl(0, 0%, 81%);
 }
 
 
 .grid__box--white{
     grid-area: harmon;
     background-color: white;
+    color:  hsl(217, 19%, 35%);
 }
 
 .grid__wide--dark{
     grid-area: abrams;
-    background-color:hsl(219, 29%, 14%);
-    color:  hsl(0, 0%, 81%);
+    @include dark-theme($theme:hsl(219, 29%, 14%));
 }
 
 .grid__tall{
     grid-area: whittle;
     background-color: white;
+    color:  hsl(217, 19%, 35%);
 }
 
 
 .grid__card{
     border-radius: 10px;
     padding: 1.5rem;
+    q{
+        font-size: 12px;
+        line-height: 1rem;
+        font-family: 'Barlow Semi Condensed', sans-serif;
+        opacity: 70%;
+    }
+    .summary{
+        height: auto;
+        h3{
+            font-size: 16px; 
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-weight: 600;
+        }
+    }
     .persona{
 
         display: flex;
@@ -81,18 +112,50 @@ body{
 
         img{
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 25px;
+            border: 3px solid hsl(0, 0%, 81%);
         }
         .persona__info{
             padding-left: 1rem;
             align-self: center;
             p{
                 margin: .25rem 0rem;
+                font-size: 12px;
+                font-family: 'Barlow Semi Condensed', sans-serif;
+                opacity: 50%;
             }
             
         
         }
 
     }
+}
+
+@media only screen and (min-width: 1100px ){
+    .grid__card{
+    
+        q{
+            line-height: 1.25rem;
+        }
+        .summary{
+            height: 4rem;
+            line-height: 1.25;
+        }
+        .persona{
+    
+            .persona__info{
+                padding-left: 1rem;
+                align-self: center;
+                p{
+                    margin: .25rem 0rem;
+                    font-size: 12px;
+                }
+                
+            
+            }
+    
+        }
+    }
+    
+
 }
